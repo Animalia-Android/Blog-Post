@@ -25,7 +25,7 @@ class PostList extends React.Component {
   }
 
   render() {
-    return <div>{this.renderList()}</div>;
+    return <div className="ui relaxed divided list">{this.renderList()}</div>;
   }
 }
 
