@@ -1,23 +1,31 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import { fetchPosts } from "../actions";
+import { fetchPosts } from '../actions';
 
 class PostList extends React.Component {
   componentDidMount() {
     this.props.fetchPosts();
   }
-  render() {
-    return this.props.post.map((post) => {
+  renderList() {
+    console.log(this.props.posts);
+    return this.props.posts.map((post) => {
       return (
         <div className="item" key={post.id}>
           <i className="large middle aligned icon user" />
           <div className="content">
-            <div className="description"></div>
+            <div className="description">
+              <h2>{post.title}</h2>
+              <p>{post.body}</p>
+            </div>
           </div>
         </div>
       );
     });
+  }
+
+  render() {
+    return <div>{this.renderList()}</div>;
   }
 }
 
