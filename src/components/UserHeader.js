@@ -1,7 +1,7 @@
-import { toHaveDisplayValue } from '@testing-library/jest-dom/dist/matchers';
-import React from 'react';
-import { connect } from 'react-redux';
-import { fetchUser } from '../actions';
+import { toHaveDisplayValue } from "@testing-library/jest-dom/dist/matchers";
+import React from "react";
+import { connect } from "react-redux";
+import { fetchUser } from "../actions";
 
 class UserHeader extends React.Component {
   componentDidMount() {
@@ -9,7 +9,12 @@ class UserHeader extends React.Component {
   }
 
   render() {
-    return <div>User Header</div>;
+    const user = this.props.users.find((user) => user.id === this.props.userId);
+
+    if (!user) {
+      return null;
+    }
+    return <div className="header">{user.name}</div>;
   }
 }
 
